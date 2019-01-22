@@ -1,9 +1,11 @@
 //Week01 Assign
 
 import java.util.Scanner;
+import java.util.*;
 
 public class PrintCalendar {
   /** Main method */
+
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
 
@@ -15,8 +17,9 @@ public class PrintCalendar {
     System.out.print("Enter month in number between 1 and 12: ");
     int month = input.nextInt();
 
+    Calendar calendar = new GregorianCalendar(year, month, 0);
     // Print calendar for the month of the year
-    printMonth(year, month);
+    printMonth(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
   }
 
   /** Print the calendar for a month in a year */
