@@ -1,4 +1,4 @@
-public abstract class GeometricObject{
+public abstract class GeometricObject implements Comparable<GeometricObject>{
   private String color = "white";
   private boolean filled;
   private java.util.Date dateCreated;
@@ -52,7 +52,24 @@ public abstract class GeometricObject{
 
   /** Abstract method getPerimeter */
   public abstract double getPerimeter();
+ 
+  
+  public int compareTo(GeometricObject o) {
+      return 1;
+  }
 
+  
+  // Static method to compare two objects' size
+  public static void max (GeometricObject oj1, GeometricObject oj2) {
+      if (oj1.getArea() > oj2.getArea()) {
+          System.out.println("Object 1 is larger");
+      }
+      else if (oj2.getArea() > oj1.getArea()){
+          System.out.println("Object 2 is larger");
+      }
+      else
+           System.out.println("Objects are equal"); 
+  }
 }
 
   
