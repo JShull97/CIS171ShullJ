@@ -4,8 +4,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
 
 public class Grid extends Application {
     @Override
