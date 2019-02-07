@@ -3,7 +3,7 @@
 Program to draw a model of a hangman game (not a functional game)
 
 ## Example Output
-(OUTPUT.png)
+(OUTPUT.PNG)
 
 ##Design
 
