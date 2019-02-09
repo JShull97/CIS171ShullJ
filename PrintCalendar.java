@@ -1,5 +1,5 @@
 import java.util.*;
-
+// grading notes including in source file. will be included in riley.md for future projects.
 public class PrintCalendar {
 
   public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class PrintCalendar {
     String monthName[] = {"Jan", "Feb", "Mar", "April" , "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
     return monthName[month - 1];
   }
-  
+ // is this necessary? can we get this info from the class? 
   public static int getNumberOfDaysInMonth(int year, int month) {
     if (month == 1 || month == 3 || month == 5 || month == 7 ||
       month == 8 || month == 10 || month == 12)
