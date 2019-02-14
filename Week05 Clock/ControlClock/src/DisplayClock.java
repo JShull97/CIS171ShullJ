@@ -1,4 +1,4 @@
-import java.time.Duration;
+import javafx.util.Duration;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -24,8 +24,18 @@ public class DisplayClock extends Application {
     Button btStop = new Button("Stop");
     hBox.getChildren().addAll(btStart, btStop);
     
-    btStart.setOnAction(new StartHandler());
-    btStop.setOnAction(new StopHandler());
+    Timeline animation = new Timeline(
+            new KeyFrame(Duration.millis(1000)), e -> move()));
+    animation.setCycleCount(Timeline.INDEFINITE);
+    animation.play();
+
+    btStart.setOnAction((e) -> {
+        
+    });
+    
+    btStop.setOnAction((e) -> {
+        
+    });
 
     // Place clock and label in border pane
     BorderPane pane = new BorderPane();
@@ -48,21 +58,14 @@ public class DisplayClock extends Application {
   }
 }
 
-class StartHandler implements EventHandler<ActionEvent> {
-    @Override
-    public void handle(ActionEvent e) {
-        timeBuild();
-    }
-    
     public static void timeBuild() {
         Timeline animation = new Timeline();
         animation.getKeyFrames().add(new KeyFrame(Duration.millis(1000)));
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.play();
     }
-}
 
-class StopHandler implements EventHandler<ActionEvent> {
+class StartHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e) {
         
