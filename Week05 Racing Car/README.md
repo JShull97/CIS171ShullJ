@@ -4,7 +4,7 @@ Animate a car moving across the screen and add stop/resume controls along with k
 
 ## Example Output
 
-![Sample Output] (README.JPG)
+![Sample Output](README.JPG)
 
 ## Analysis/Design Steps
 
