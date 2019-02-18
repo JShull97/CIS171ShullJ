@@ -12,10 +12,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 public class DisplayClock extends Application {
+  Timeline animation;
+  ClockPane clock = new ClockPane();
+  int i;
   @Override // Override the start method in the Application class
-  public void start(Stage primaryStage) {
-    // Create a clock and a label
-    ClockPane clock = new ClockPane();
+  public void start(Stage primaryStage) { 
     
     HBox hBox = new HBox();
     hBox.setSpacing(10);
@@ -24,17 +25,17 @@ public class DisplayClock extends Application {
     Button btStop = new Button("Stop");
     hBox.getChildren().addAll(btStart, btStop);
     
-    Timeline animation = new Timeline(
-            new KeyFrame(Duration.millis(1000)), e -> move()));
+    animation = new Timeline(
+      new KeyFrame(Duration.millis(1000), e -> clockAnimation()));
     animation.setCycleCount(Timeline.INDEFINITE);
-    animation.play();
+    animation.play(); // Start animation
 
     btStart.setOnAction((e) -> {
-        
+        animation.play();
     });
     
     btStop.setOnAction((e) -> {
-        
+        animation.pause();
     });
 
     // Place clock and label in border pane
@@ -48,6 +49,11 @@ public class DisplayClock extends Application {
     primaryStage.setScene(scene); // Place the scene in the stage
     primaryStage.show(); // Display the stage
   }
+  
+  public void clockAnimation() {
+      i++;
+      clock.setSecond(i);
+    }
 
   /**
    * The main method is only needed for the IDE with limited
@@ -56,18 +62,4 @@ public class DisplayClock extends Application {
   public static void main(String[] args) {
     launch(args);
   }
-}
-
-    public static void timeBuild() {
-        Timeline animation = new Timeline();
-        animation.getKeyFrames().add(new KeyFrame(Duration.millis(1000)));
-        animation.setCycleCount(Timeline.INDEFINITE);
-        animation.play();
-    }
-
-class StartHandler implements EventHandler<ActionEvent> {
-    @Override
-    public void handle(ActionEvent e) {
-        
-    }
 }

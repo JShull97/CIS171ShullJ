@@ -53,7 +53,7 @@ public class ClockPane extends Pane {
   /** Set a new second */
   public void setSecond(int second) {
     this.second = second;
-    paintClock();
+    setCurrentTime();
   }
   
   /* Set the current time for the clock */
@@ -70,7 +70,7 @@ public class ClockPane extends Pane {
   }
   
   /** Paint the clock */
-  private void paintClock() {
+  public void paintClock() {
     // Initialize clock parameters
     double clockRadius = 
       Math.min(getWidth(), getHeight()) * 0.8 * 0.5;
