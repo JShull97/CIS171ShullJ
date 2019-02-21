@@ -1,3 +1,9 @@
+/**
+* Program: TextFields
+* Developer: Justin Shull
+* Date: 2/21/19
+* Purpose: Use TextField Properties(from Revel)
+*/
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
