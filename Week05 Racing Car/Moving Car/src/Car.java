@@ -1,3 +1,9 @@
+/**
+* Program: Racing Car
+* Developer: Justin Shull
+* Date: 2/21/19
+* Purpose: Create a new Car pane
+*/
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
