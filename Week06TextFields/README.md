@@ -3,3 +3,6 @@
 Use the various properties of the textfield object and also get some experience working with radio buttons
 
 ## Sample Output
+
+![Sample Output](README.JPG)
+
