@@ -53,12 +53,14 @@ public abstract class GeometricObject implements Comparable<GeometricObject>{
   /** Abstract method getPerimeter */
   public abstract double getPerimeter();
  
-  
+// not properly implemented. The compareTo should have the if logic tbat
+// is in the max method. positive number returned if first value is >, negative
+// value returned if first value is <, 0 if equal
   public int compareTo(GeometricObject o) {
       return 1;
   }
 
-  
+// max method should use your compareTo 
   // Static method to compare two objects' size
   public static void max (GeometricObject oj1, GeometricObject oj2) {
       if (oj1.getArea() > oj2.getArea()) {
