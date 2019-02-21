@@ -1,3 +1,9 @@
+/**
+* Program: racing Car
+* Developer: Justin Shull
+* Date: 2/21/19
+* Purpose: Animate the car moving across the screen
+*/
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Application;
