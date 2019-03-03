@@ -6,12 +6,14 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
+// missing header comments
+
 public class Hangman extends Application{
     @Override
     public void start(Stage primaryStage) {
         //create a pane
         Pane pane = new Pane();
-        
+// great code, could be improved by using methods for each component
         //create noose
         Line noose1 = new Line(25, 25, 200, 25);
 	noose1.setStroke(Color.BROWN);
