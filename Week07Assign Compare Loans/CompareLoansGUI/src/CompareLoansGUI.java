@@ -1,3 +1,9 @@
+/**
+* Program: Compare Loans
+* Developer: Justin Shull
+* Date: 3/5/19
+* Purpose: Use GUI Applications to display loan payments
+*/
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
