@@ -4,7 +4,7 @@ Rewrite a program provided in the book in GUI format
 
 ## Example Output 
 
-![Sample Output](README.jpg)
+![Sample Output](README.JPG)
 
 ## Anaylsis/Design Steps
 
