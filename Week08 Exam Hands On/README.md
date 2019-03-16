@@ -4,6 +4,8 @@ Create a GUI program that allows a user to enter a value in USD and convert that
 
 ## Example Output
 
+![Sample Output](README.JPG)
+
 ## Analysis / Design
 
 From reading the instructions I already had a full plan in mind. Set up the stage and then write the event listener and conversion method. I used HBoxs to create the two rows and added those along with the button to a VBox to stack the fields in the way I wanted.
