@@ -23,19 +23,22 @@ public class UStoCADCalc extends Application {
         VBox vBox = new VBox(5);
         HBox hBox1 = new HBox(5);
         HBox hBox2 = new HBox(5);
-        Button convert = new Button("Convert");
+        HBox hBox3 = new HBox(5);
+        Button convertCAD = new Button("Convert to CAD");
+        Button convertUSD = new Button("Convert to USD");
         
         // design scene
-        tfCAD.setDisable(true);
         tfUS.setAlignment(Pos.BOTTOM_RIGHT);
         tfCAD.setAlignment(Pos.BOTTOM_RIGHT);
-        tfCAD.setStyle("-fx-opacity: 1.0"); // so text isn't grey
         hBox1.getChildren().addAll(new Label("US Dollars\t   "), tfUS);
         hBox2.getChildren().addAll(new Label("Canadian Dollars"), tfCAD);
-        vBox.getChildren().addAll(hBox1, hBox2, convert);
+        hBox3.getChildren().addAll(convertCAD, convertUSD);
+        hBox3.setAlignment(Pos.CENTER);
+        vBox.getChildren().addAll(hBox1, hBox2, hBox3);
         
         // set event listener
-        convert.setOnAction(e -> convert());
+        convertCAD.setOnAction(e -> convertCAD());
+        convertUSD.setOnAction(e -> convertUSD());
         
         // set stage
         Scene scene = new Scene(vBox);
@@ -44,9 +47,14 @@ public class UStoCADCalc extends Application {
         primaryStage.show();
     }
     
-    public void convert() {
+    public void convertCAD() {
         // convert USD to CAD
         tfCAD.setText(String.format("%.2f", ((Double.parseDouble(tfUS.getText())) * 1.5)));
+    }
+    
+    public void convertUSD() {
+        // convert USD to CAD
+        tfUS.setText(String.format("%.2f", ((Double.parseDouble(tfCAD.getText())) / 1.5)));
     }
 
     
