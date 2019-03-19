@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class ShuffleArrayList {
    
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         list.addAll(Arrays.asList("Justin", "Selena", "Jacob", "Carla", "Eric"));
         shuffle(list);
         
