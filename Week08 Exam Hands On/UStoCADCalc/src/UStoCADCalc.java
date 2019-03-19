@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class UStoCADCalc extends Application {
-    TextField tfUS = new TextField(); 
+    TextField tfUSD = new TextField(); 
     TextField tfCAD = new TextField();
     @Override
     public void start(Stage primaryStage) {
@@ -28,11 +28,13 @@ public class UStoCADCalc extends Application {
         Button convertUSD = new Button("Convert to USD");
         
         // design scene
-        tfUS.setAlignment(Pos.BOTTOM_RIGHT);
+        tfUSD.setAlignment(Pos.BOTTOM_RIGHT);
         tfCAD.setAlignment(Pos.BOTTOM_RIGHT);
-        hBox1.getChildren().addAll(new Label("US Dollars\t   "), tfUS);
+        hBox1.getChildren().addAll(new Label("US Dollars\t   "), tfUSD);
         hBox2.getChildren().addAll(new Label("Canadian Dollars"), tfCAD);
         hBox3.getChildren().addAll(convertCAD, convertUSD);
+        hBox1.setAlignment(Pos.CENTER);
+        hBox2.setAlignment(Pos.CENTER);
         hBox3.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(hBox1, hBox2, hBox3);
         
@@ -41,7 +43,7 @@ public class UStoCADCalc extends Application {
         convertUSD.setOnAction(e -> convertUSD());
         
         // set stage
-        Scene scene = new Scene(vBox);
+        Scene scene = new Scene(vBox, 250, 100);
         primaryStage.setScene(scene);
         primaryStage.setTitle("US to CAD Conversion");
         primaryStage.show();
@@ -49,12 +51,14 @@ public class UStoCADCalc extends Application {
     
     public void convertCAD() {
         // convert USD to CAD
-        tfCAD.setText(String.format("%.2f", ((Double.parseDouble(tfUS.getText())) * 1.5)));
+        if (tfUSD.getText().equals("")) return; // prevent error
+        tfCAD.setText(String.format("%.2f", ((Double.parseDouble(tfUSD.getText())) * 1.5)));
     }
     
     public void convertUSD() {
         // convert USD to CAD
-        tfUS.setText(String.format("%.2f", ((Double.parseDouble(tfCAD.getText())) / 1.5)));
+        if (tfCAD.getText().equals("")) return; // prevent error
+        tfUSD.setText(String.format("%.2f", ((Double.parseDouble(tfCAD.getText())) / 1.5)));
     }
 
     
