@@ -2,7 +2,7 @@
 * Program: SortArrayList
 * Developer: Justin Shull
 * Date: 3/19/19
-* Purpose: Sort and ArrayList
+* Purpose: Sort an ArrayList
 */
 import java.util.ArrayList;
 
