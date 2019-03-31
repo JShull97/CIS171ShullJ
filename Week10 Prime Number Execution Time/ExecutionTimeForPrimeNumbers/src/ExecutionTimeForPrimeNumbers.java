@@ -37,7 +37,7 @@ public class ExecutionTimeForPrimeNumbers extends Application{
         Label value7 = new Label();
         Label value8 = new Label();
         
-        
+        // Time each method (I didn't go nearly as high as the assignment said to go because that would take forever)
         timeMethods(10);
         value.setText(Long.toString(time22_5));
         vBox1.getChildren().addAll(new Label("  22_5"), value);
@@ -74,6 +74,7 @@ public class ExecutionTimeForPrimeNumbers extends Application{
         hBox.getChildren().add(tab2);
         hBox.getChildren().add(vBox3);
         
+        // Set scene
         Scene scene = new Scene(hBox, 350, 100);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Execution Time to find Prime numbers");
@@ -84,6 +85,7 @@ public class ExecutionTimeForPrimeNumbers extends Application{
         launch(args);
     }
     
+    // Store the runtimes of each method
     public void timeMethods(int upTo) {
         long startTime = System.nanoTime();
         Listing22_5(upTo);
@@ -101,6 +103,7 @@ public class ExecutionTimeForPrimeNumbers extends Application{
         System.out.println("22_7 took: " + time22_7);
     }
     
+    // Methods from the book, all I changed was the the limit being passed to them through the parameter list
     public static void Listing22_5(int n) {
 
         final int NUMBER_PER_LINE = 10; // Display 10 per line
