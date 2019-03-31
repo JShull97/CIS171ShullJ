@@ -1,3 +1,9 @@
+/**
+* Program: PrimeNumbers
+* Developer: Justin Shull (Revel)
+* Date: 3/31/19
+* Purpose: Find all prime numbers up to a designated limit
+*/
 import java.io.RandomAccessFile;
 
 public class PrimeNumbers {
