@@ -2,7 +2,7 @@
 
 ## Example Output
 
-![Sample Output](READ.JPG)
+![Sample Output](README.JPG)
 
 ## Analysis / Design
 
