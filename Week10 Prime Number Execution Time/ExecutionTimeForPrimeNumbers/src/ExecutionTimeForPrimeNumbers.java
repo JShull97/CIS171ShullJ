@@ -1,8 +1,12 @@
-
+/**
+* Program: ExecutionTimeForPrimeNumbers
+* Developer: Justin Shull (Revel)
+* Date: 3/31/19
+* Purpose: Compare the time it takes for different methods to find all prime numbers up to different limits
+*/
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,37 +25,58 @@ public class ExecutionTimeForPrimeNumbers extends Application{
         HBox hBox = new HBox(5);
         
         vBox.getChildren().addAll(new Label("Listings"), new Label("10"), new Label("100"), new Label("200"));
+        
+        // Because only having one label had values overwrite itself
         Label value = new Label();
+        Label value1 = new Label();
+        Label value2 = new Label();
+        Label value3 = new Label();
+        Label value4 = new Label();
+        Label value5 = new Label();
+        Label value6 = new Label();
+        Label value7 = new Label();
+        Label value8 = new Label();
+        
         
         timeMethods(10);
         value.setText(Long.toString(time22_5));
-        vBox1.getChildren().addAll(new Label("22_5"), value);
-        value.setText(Long.toString(time22_6));
-        vBox2.getChildren().addAll(new Label("22_6"), value);
-        value.setText(Long.toString(time22_7));
-        vBox3.getChildren().addAll(new Label("22_7"), value);
+        vBox1.getChildren().addAll(new Label("  22_5"), value);
+        value1.setText(Long.toString(time22_6));
+        vBox2.getChildren().addAll(new Label("  22_6"), value1);
+        value2.setText(Long.toString(time22_7));
+        vBox3.getChildren().addAll(new Label("  22_7"), value2);
         
         timeMethods(100);
-        value.setText(Long.toString(time22_5));
-        vBox1.getChildren().add(value);
-        value.setText(Long.toString(time22_6));
-        vBox2.getChildren().add(value);
-        value.setText(Long.toString(time22_7));
-        vBox3.getChildren().add(value);
+        value3.setText(Long.toString(time22_5));
+        vBox1.getChildren().add(value3);
+        value4.setText(Long.toString(time22_6));
+        vBox2.getChildren().add(value4);
+        value5.setText(Long.toString(time22_7));
+        vBox3.getChildren().add(value5);
         
         timeMethods(200);
-        value.setText(Long.toString(time22_5));
-        vBox1.getChildren().add(value);
-        value.setText(Long.toString(time22_6));
-        vBox2.getChildren().add(value);
-        value.setText(Long.toString(time22_7));
-        vBox3.getChildren().add(value);
+        value6.setText(Long.toString(time22_5));
+        vBox1.getChildren().add(value6);
+        value7.setText(Long.toString(time22_6));
+        vBox2.getChildren().add(value7);
+        value8.setText(Long.toString(time22_7));
+        vBox3.getChildren().add(value8);
         
-        hBox.getChildren().addAll(vBox, vBox1, vBox2, vBox3);
+        // Because trying to add tab once caused errors
+        Label tab = new Label("\t");
+        Label tab1 = new Label("\t");
+        Label tab2 = new Label("\t");
+        hBox.getChildren().addAll(vBox);
+        hBox.getChildren().add(tab);
+        hBox.getChildren().add(vBox1);
+        hBox.getChildren().add(tab1);
+        hBox.getChildren().add(vBox2);
+        hBox.getChildren().add(tab2);
+        hBox.getChildren().add(vBox3);
         
-        Scene scene = new Scene(hBox, 250, 100);
+        Scene scene = new Scene(hBox, 350, 100);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("US to CAD Conversion");
+        primaryStage.setTitle("Execution Time to find Prime numbers");
         primaryStage.show();
     }
 
