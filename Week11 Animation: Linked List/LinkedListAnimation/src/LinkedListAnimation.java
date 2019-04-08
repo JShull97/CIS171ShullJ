@@ -2,7 +2,7 @@
 * Program: LinkedListAnimation
 * Developer: Justin Shull (Revel)
 * Date: 4/7/19
-* Purpose: Create an animation to show the changes being made to an array
+* Purpose: Create an animation to show the changes being made to a linked list
 */
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -12,11 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-
 import javafx.stage.Stage;
 
 public class LinkedListAnimation extends Application {  
-    private final MyArrayList<Integer> list = new MyArrayList<>();
+    private final MyLinkedList<Integer> list = new MyLinkedList<>();
     private final ListView view = new ListView();
     private final Button btSearch = new Button("Search");
     private final Button btInsert = new Button("Insert");
@@ -40,7 +39,7 @@ public class LinkedListAnimation extends Application {
 
         // Create a scene and place it in the stage
         Scene scene = new Scene(borderPane, 500, 250);
-        primaryStage.setTitle("ArrayList Animation"); // Set the stage title
+        primaryStage.setTitle("LinkedList Animation"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage
         

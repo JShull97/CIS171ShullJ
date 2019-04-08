@@ -10,7 +10,7 @@ public class ListView extends Pane {
     private final int boxWidth = 30;
     private final int boxHeight = 20;
 
-    protected void repaint(MyArrayList<Integer> list) {
+    protected void repaint(MyLinkedList<Integer> list) {
         getChildren().clear();
         int x = startingX + 10;
         int y = startingY + 10;        
@@ -21,7 +21,7 @@ public class ListView extends Pane {
             getChildren().add(new Text(startingX, startingY, "list is empty."));
         }
         else {
-            getChildren().add(new Text(startingX, startingY, "array list"));        
+            getChildren().add(new Text(startingX, startingY, "linked list"));        
             for (int i = 0; i < list.size(); i++) {
                 Rectangle rectangle = new Rectangle(x, y, boxWidth, boxHeight);
                 rectangle.setFill(Color.WHITE);
