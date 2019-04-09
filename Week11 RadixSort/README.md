@@ -1,5 +1,7 @@
 # Week11 Assign: Exercise 23.12 Radix Sort
 
+Write a program that sorts an array with the radix method 
+
 ## Example Output
 
 ![Sample Output](README.JPG)
