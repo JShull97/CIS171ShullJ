@@ -8,7 +8,7 @@ Create a program that displays an animation showing what happens when using a li
 
 ## Analysis / Design
 
-At first this assignment seemed like a LOT to get done, until I realized a lot of the code I needed wasa provided by the book.So by using pieces from the book and putting all the classes into seperate folders to keep things more organized I got it done.
+At first this assignment seemed like a LOT to get done, until I realized a lot of the code I needed was provided by the book. So by using pieces from the book and then adding the event listeners and everything to the stage.
 
 ### Testing
 
