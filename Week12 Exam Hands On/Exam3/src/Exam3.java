@@ -94,7 +94,7 @@ public class Exam3 extends Application{
         pane.setLeft(vBox);
 
         // Set scene
-        Scene scene = new Scene(pane, 600, 150);
+        Scene scene = new Scene(pane, 600, 175);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Time Sorts");
         primaryStage.show();
