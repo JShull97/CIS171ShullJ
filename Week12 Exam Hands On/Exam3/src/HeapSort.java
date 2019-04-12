@@ -1,5 +1,5 @@
 public class HeapSort {
-  /** Heap sort method */
+  // Heap sort method
   public static <E extends Comparable<E>> void heapSort(E[] list) {
     // Create a Heap of integers
     Heap<E> heap = new Heap<>();
