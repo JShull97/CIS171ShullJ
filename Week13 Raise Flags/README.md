@@ -2,7 +2,7 @@
 
 ## Example Output
 
-![Sample Output](README.md)
+![Sample Output](README.MD)
 
 ## Analysis / Design
 
