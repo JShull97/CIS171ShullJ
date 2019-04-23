@@ -19,18 +19,21 @@ public class RaiseFlag extends Application {
     public void start(Stage primaryStage) {
         Pane pane = new Pane();
        
+        // write the animation
         ImageView imgV = new ImageView("Images/us.gif");
         PathTransition pt = new PathTransition(Duration.millis(1000),
             new Line(100, 200, 100, 0), imgV);
         
+        // create the thread
         new Thread(() -> {
-            Platform.runLater(() -> {
+            Platform.runLater(() -> { // run the animation once ready
                 pt.play();
             });
         }).start();
         
         pane.getChildren().add(imgV);
         
+        // set scene
         Scene scene = new Scene(pane, 250, 200);
         primaryStage.setTitle("Raise Flag Animation");
         primaryStage.setScene(scene);
