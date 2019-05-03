@@ -45,11 +45,11 @@ public class Hand {
       return hand.indexOf(card);
    }
 
-   public int getSoft(){
+   public int getSoft() {
        return soft; 
    }
 
-   public int evaluateHand(){
+   public int evaluateHand() {
        return total; 
    }     
 
