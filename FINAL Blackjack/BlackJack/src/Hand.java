@@ -1,19 +1,25 @@
 import java.util.*;
 
 public class Hand {
+   private String handName;
    private int total; 
    private int soft; 
    private final ArrayList hand = new ArrayList(); 
+   
+   public Hand(String name) {
+       this.handName = name;
+   }
 
    public void addCard(Card card) {
       total += card.getValue(); 
-      if(card.getRank().equals("1") && total > 10){
-          soft += 1;  
-      } else if (card.getRank().equals("1")) total += 10; // because we are already adding 1 for the ace
+      // Ace checking
+      if(card.getRank().equals("1") && total < 10)
+          total += 10;
+//      } else if (card.getRank().equals("1")) total += 10; // because we are already adding 1 for the ace
       if(soft > 0){
            if(total > 21){
                total -= 10; 
-               soft -= 1; 
+               //soft -= 1; 
            }
        }
       hand.add(card);
@@ -44,6 +50,10 @@ public class Hand {
    public int findCard(Card card) {
       return hand.indexOf(card);
    }
+   
+   public String getName() {
+       return handName;
+   }
 
    public int getSoft() {
        return soft; 
@@ -57,4 +67,10 @@ public class Hand {
     public String toString() {
         return hand.toString();
     }
+
+    public void softAce() {
+        total -= 10;
+        soft--;
+    }
+   
 }

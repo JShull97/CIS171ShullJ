@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javafx.scene.image.Image;
 
-public class Deck {
+public final class Deck {
    private List deck;
    private int index;
    
@@ -51,10 +51,7 @@ public class Deck {
    }
 
    public boolean isEmpty() {
-      if (index >= deck.size())
-         return true;
-      else
-         return false;
+       return index >= deck.size();
    }
 
    public void restoreDeck() {

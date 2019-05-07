@@ -24,8 +24,8 @@ import javafx.scene.text.Font;
 public class Blackjack extends Application {
     // class level fields
     private final Deck deck = new Deck(1);
-    private final Hand hand = new Hand();
-    private final Hand dealer = new Hand();
+    private final Hand hand = new Hand("Player");
+    private final Hand dealer = new Hand("Dealer");
     private boolean busted;
     private boolean playerTurn;
     FlowPane cards = new FlowPane();
@@ -42,7 +42,6 @@ public class Blackjack extends Application {
     int dealerWins = 0;
     int playerWins = 0;
     int draws = 0;
-    
     
     @Override
     public void start(Stage primaryStage) {
@@ -64,6 +63,7 @@ public class Blackjack extends Application {
         winTally.setFont(fontSmall);
         winTally.setTextFill(Color.WHITE);
         actionLog.setEditable(false);
+        actionLog.setPrefWidth(160);
         updateTally();       
         
         // add table background
@@ -81,9 +81,17 @@ public class Blackjack extends Application {
             if (playerTurn == true && busted != true) {
                 drawCard(hand, cards, totalLabel);
                 if (hand.evaluateHand() > 21) {
+                    if(hand.getSoft() > 0) {
+                        hand.softAce();
+                        System.out.println(hand.evaluateHand());
+                        return;
+                    }
                     // you busted 
                     busted = true;
                     playerTurn = false;
+                    dealerWins++;
+                    updateTally();
+                    actionLog.appendText("\nThe player busted");
                     status.setText("You've busted");
                 }
             }
@@ -101,16 +109,19 @@ public class Blackjack extends Application {
                     // tie, push
                     draws++;
                     updateTally();
+                    actionLog.appendText("\nThe game was a draw");
                     status.setText("You've pushed");
                 } else if (dealerTotal <= 21 && playerTotal <= dealerTotal) {
                     // you lost 
                     dealerWins++;
                     updateTally();
+                    actionLog.appendText("\nThe Dealer won the game");
                     status.setText("You've lost");
                 } else {
                     // you won
                     playerWins++;
                     updateTally();
+                    actionLog.appendText("\nThe player won the game");
                     status.setText("You've won");
                 }
             }
@@ -138,14 +149,12 @@ public class Blackjack extends Application {
         grid.add(standbtn, 1, 5);
         grid.add(newbtn, 2, 5);
         grid.add(status, 0, 6, 3, 1);
-        //grid.setBackground(background);
         
         BorderPane pane = new BorderPane();
         pane.setCenter(grid);
         pane.setBackground(background);
-        //pane.setRight(pane);
         
-        // add deck stack
+        // add deck stack to the scene
         VBox deckBox = new VBox();
         deckBox.getChildren().addAll(new ImageView("Images/b2fv.png"), deckStatus);
         pane.setLeft(deckBox);
@@ -165,34 +174,37 @@ public class Blackjack extends Application {
         newHand();
     }
 
-    public void drawCard(Hand hand, FlowPane pane, Label l) {
+    // deals a card to the passed hand, add that card's image to the appropriate flowpane and update the total label
+    public void drawCard(Hand hand, FlowPane pane, Label label) {
         Card card = deck.dealCard();
         deckStatus.setText("Cards remaining in deck: " + deck.getNumberOfCardsRemaining());
-        //actionLog.appendText("\n" + hand + " drew " + card);
+        actionLog.appendText("\n" + hand.getName() + " drew " + card.getRank() + " of " + card.getSuit());
         ImageView img = new ImageView(card.getCardImage());
         pane.getChildren().add(img);
         hand.addCard(card);
         int handTotal = hand.evaluateHand();
         StringBuilder total = new StringBuilder();
         if (hand.getSoft() > 0) {
-            //if (hand.evaluateHand() - 10 > 0)
-                total.append(handTotal - 10).append("/");
-        }
-        total.append(handTotal);
-        l.setText(total.toString());
+            if (hand.evaluateHand() - 10 > 0)
+                total.append(handTotal - 10);
+        } else total.append(handTotal);
+        label.setText(total.toString());
     }
 
+    // make and shuffle a new deck when needed
     public void newDeck() {
         deck.restoreDeck();
         deck.shuffle();
     }
     
+    // update per win
     public void updateTally() {
         winTally.setText("Player: " + playerWins + 
                 "\nDealer: " + dealerWins + 
                 "\nDraws: " + draws);
     }
 
+    // discard all the cards in play and start a new one
     public void newHand() {
         // shuffles deck if not enough cards remain
         if (deck.getNumberOfCardsRemaining() <= deck.getSizeOfDeck() * 0.2) newDeck();
@@ -203,8 +215,10 @@ public class Blackjack extends Application {
         dealerCards.getChildren().removeAll(dealerCards.getChildren());
         totalLabel.setText("");
         totalLabelDealer.setText("");
+        status.setText("");
         busted = false;
         playerTurn = true;
+        actionLog.appendText("\nNew game started");
         // draw cards for the initial hands, player gets 2, dealer 1 
         drawCard(hand, cards, totalLabel);
         drawCard(dealer, dealerCards, totalLabelDealer);
