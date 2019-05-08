@@ -37,7 +37,7 @@ public class Blackjack extends Application {
     Label deckStatus = new Label();
     Label status = new Label();
     Label winTally = new Label();
-    Image imageback = new Image("Images/table.jpg");
+    Image imageback = new Image("Images/table2.jpg");
     TextArea actionLog = new TextArea();
     int dealerWins = 0;
     int playerWins = 0;
@@ -46,24 +46,23 @@ public class Blackjack extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Update all text colors and fonts
-        Font fontLarge = new Font("Arial", 20);
-        Font fontSmall = new Font("Arial", 12);
-        totalLabel.setFont(fontLarge);
+        Font font = new Font("Arial", 20);
+        totalLabel.setFont(font);
         totalLabel.setTextFill(Color.WHITE);
-        totalLabelDealer.setFont(fontLarge);
+        totalLabelDealer.setFont(font);
         totalLabelDealer.setTextFill(Color.WHITE);
         status.setTextFill(Color.WHITE);
-        status.setFont(fontLarge);
+        status.setFont(font);
         dealerLbl.setTextFill(Color.WHITE);
-        dealerLbl.setFont(fontLarge);
+        dealerLbl.setFont(font);
         playerLbl.setTextFill(Color.WHITE);
-        playerLbl.setFont(fontLarge);
-        deckStatus.setFont(fontSmall);
+        playerLbl.setFont(font);
+        deckStatus.setFont(font);
         deckStatus.setTextFill(Color.WHITE);
-        winTally.setFont(fontSmall);
+        winTally.setFont(font);
         winTally.setTextFill(Color.WHITE);
         actionLog.setEditable(false);
-        actionLog.setPrefWidth(160);
+        actionLog.setPrefWidth(190);
         updateTally();       
         
         // add table background
@@ -72,20 +71,15 @@ public class Blackjack extends Application {
         Background background = new Background(backgroundImage);
         
         // create buttons
-        Button drawbtn = new Button("Hit");
+        Button hitbtn = new Button("Hit");
         Button newbtn = new Button("New Hand");
         Button standbtn = new Button("Stand");
         
         // button event listeners
-        drawbtn.setOnAction((e) -> {
+        hitbtn.setOnAction((e) -> {
             if (playerTurn == true && busted != true) {
                 drawCard(hand, cards, totalLabel);
                 if (hand.evaluateHand() > 21) {
-                    if(hand.getSoft() > 0) {
-                        hand.softAce();
-                        System.out.println(hand.evaluateHand());
-                        return;
-                    }
                     // you busted 
                     busted = true;
                     playerTurn = false;
@@ -145,7 +139,7 @@ public class Blackjack extends Application {
         grid.add(cards, 0, 3, 3, 1);
         grid.add(playerLbl, 0, 4);
         grid.add(totalLabel, 1, 4, 2, 1);
-        grid.add(drawbtn, 0, 5);
+        grid.add(hitbtn, 0, 5);
         grid.add(standbtn, 1, 5);
         grid.add(newbtn, 2, 5);
         grid.add(status, 0, 6, 3, 1);
@@ -156,16 +150,18 @@ public class Blackjack extends Application {
         
         // add deck stack to the scene
         VBox deckBox = new VBox();
+        deckBox.setPadding(new Insets(11, 12, 13, 14));
         deckBox.getChildren().addAll(new ImageView("Images/b2fv.png"), deckStatus);
         pane.setLeft(deckBox);
         
         // add action log and win tally
         VBox actionBox = new VBox();
+        actionBox.setPadding(new Insets(11, 12, 13, 14));
         actionBox.getChildren().addAll(actionLog, winTally);
         pane.setRight(actionBox);
         
         // set scene and stage
-        Scene scene = new Scene(pane, 1600, 900);
+        Scene scene = new Scene(pane, 1050, 785);
         primaryStage.setTitle("BlackJack");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image("Images/hq.png"));
@@ -177,8 +173,8 @@ public class Blackjack extends Application {
     // deals a card to the passed hand, add that card's image to the appropriate flowpane and update the total label
     public void drawCard(Hand hand, FlowPane pane, Label label) {
         Card card = deck.dealCard();
-        deckStatus.setText("Cards remaining in deck: " + deck.getNumberOfCardsRemaining());
-        actionLog.appendText("\n" + hand.getName() + " drew " + card.getRank() + " of " + card.getSuit());
+        deckStatus.setText(deck.getNumberOfCardsRemaining() + " Cards");
+        actionLog.appendText("\n" + hand.getName() + " drew " + card.writeRank() + " of " + card.writeSuit());
         ImageView img = new ImageView(card.getCardImage());
         pane.getChildren().add(img);
         hand.addCard(card);
@@ -223,6 +219,13 @@ public class Blackjack extends Application {
         drawCard(hand, cards, totalLabel);
         drawCard(dealer, dealerCards, totalLabelDealer);
         drawCard(hand, cards, totalLabel);
+        // check for blackjack
+        if (hand.evaluateHand() == 21) {
+            playerWins++;
+            updateTally();
+            actionLog.appendText("\nThe player got a blackjack!");
+            status.setText("You've won with a blackjack");
+        }
     }
 
     public static void main(String[] args) {

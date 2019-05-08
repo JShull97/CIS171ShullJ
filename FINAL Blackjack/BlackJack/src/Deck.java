@@ -4,7 +4,7 @@ import java.util.Collections;
 import javafx.scene.image.Image;
 
 public final class Deck {
-   private List deck;
+   private final List deck;
    private int index;
    
    String[] suits = {"c", "d", "h", "s"};
@@ -15,18 +15,14 @@ public final class Deck {
    public Deck(int numDecks) {
         deck = new ArrayList();
         index = 0;
-       
-        try{
-            for (int suit = 0; suit < 4; suit++) {
-                for (int faceNum = 0; faceNum < 13; faceNum++) {
-                    Card card = new Card(suits[suit], values[faceNum], new Image(Card.getFilename(suits[suit], values[faceNum])));
-                    addCard(card);
-                }
+
+        for (int suit = 0; suit < 4; suit++) {
+            for (int faceNum = 0; faceNum < 13; faceNum++) {
+                Card card = new Card(suits[suit], values[faceNum], new Image(Card.getFilename(suits[suit], values[faceNum])));
+                addCard(card);
             }
-            shuffle(); 
-        } catch (Exception ex){
-            System.out.println(ex.getMessage()); 
         }
+        shuffle(); 
    }
 
    public void addCard(Card card) {

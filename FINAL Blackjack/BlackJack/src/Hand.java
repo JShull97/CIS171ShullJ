@@ -1,7 +1,8 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Hand {
-   private String handName;
+   private final String handName;
    private int total; 
    private int soft; 
    private final ArrayList hand = new ArrayList(); 
@@ -66,11 +67,6 @@ public class Hand {
    @Override
     public String toString() {
         return hand.toString();
-    }
-
-    public void softAce() {
-        total -= 10;
-        soft--;
     }
    
 }

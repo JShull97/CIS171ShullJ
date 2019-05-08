@@ -4,9 +4,6 @@ public class Card {
    private final String suitValue;
    private final String rankValue;
    private final Image cardImage;
-   
-   String[] suits = {"CLUBS", "DIAMONDS", "HEARTS", "SPADES"};
-   String[] value = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k"};
 
    public Card(String suit, String rank, Image cardFace) {
       cardImage = cardFace;
@@ -39,5 +36,23 @@ public class Card {
 
    public Image getCardImage() {
       return cardImage;
+   }
+   
+   public String writeRank() {
+       int rank = getValue();
+       if (rank == 1) return "Ace";
+       if (rank < 10) return Integer.toString(rank);
+       else if (this.rankValue.equals("j")) return "Jack";
+       else if (this.rankValue.equals("q")) return "Queen";
+       else if (this.rankValue.equals("k")) return "King";
+       else return "10";
+   }
+   
+   public String writeSuit() {
+       String suit = getSuit();
+       if (suit.equals("s")) return "Spades";
+       else if (suit.equals("h")) return "Hearts";
+       else if (suit.equals("c")) return "Clubs";
+       else return "Diamonds";
    }
 }
