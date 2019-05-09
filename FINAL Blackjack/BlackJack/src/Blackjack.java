@@ -16,7 +16,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -132,10 +131,6 @@ public class Blackjack extends Application {
         grid.add(dealerCards, 0, 0, 3, 1);
         grid.add(dealerLbl, 0, 1);
         grid.add(totalLabelDealer, 1, 1, 2, 1);
-        // padding
-        Pane p = new Pane();
-        p.setPrefSize(0, 100);
-        grid.add(p, 0, 2);
         grid.add(cards, 0, 3, 3, 1);
         grid.add(playerLbl, 0, 4);
         grid.add(totalLabel, 1, 4, 2, 1);
@@ -160,7 +155,7 @@ public class Blackjack extends Application {
         actionBox.getChildren().addAll(actionLog, winTally);
         pane.setRight(actionBox);
         
-        // set scene and stage
+        // set scenes and stage
         Scene scene = new Scene(pane, 1050, 785);
         primaryStage.setTitle("BlackJack");
         primaryStage.setScene(scene);
@@ -180,10 +175,7 @@ public class Blackjack extends Application {
         hand.addCard(card);
         int handTotal = hand.evaluateHand();
         StringBuilder total = new StringBuilder();
-        if (hand.getSoft() > 0) {
-            if (hand.evaluateHand() - 10 > 0)
-                total.append(handTotal - 10);
-        } else total.append(handTotal);
+        total.append(handTotal);
         label.setText(total.toString());
     }
 
@@ -219,12 +211,13 @@ public class Blackjack extends Application {
         drawCard(hand, cards, totalLabel);
         drawCard(dealer, dealerCards, totalLabelDealer);
         drawCard(hand, cards, totalLabel);
-        // check for blackjack
+        // check for a blackjack
         if (hand.evaluateHand() == 21) {
             playerWins++;
             updateTally();
             actionLog.appendText("\nThe player got a blackjack!");
             status.setText("You've won with a blackjack");
+            playerTurn = false;
         }
     }
 

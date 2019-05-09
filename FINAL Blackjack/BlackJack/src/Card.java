@@ -26,11 +26,9 @@ public class Card {
    public int getValue() {
        String rank = this.rankValue;  
        try{
-           // try to turn it into an integer 
-           return Integer.parseInt(rank);  
+           return Integer.parseInt(rank);  // tries to return as an integer
        } catch (Exception ex){
-           // if failed, it's a face card
-               return 10; 
+            return 10;   // if failed, it's a face card
        }
    }
 

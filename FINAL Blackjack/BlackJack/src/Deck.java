@@ -5,23 +5,21 @@ import javafx.scene.image.Image;
 
 public final class Deck {
    private final List deck;
-   private int index;
+   private int cardIndex;
    
    String[] suits = {"c", "d", "h", "s"};
    String[] values = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k"};
-
-   //public Deck(){this(1);}
    
    public Deck(int numDecks) {
         deck = new ArrayList();
-        index = 0;
+        cardIndex = 0;
 
         for (int suit = 0; suit < 4; suit++) {
             for (int faceNum = 0; faceNum < 13; faceNum++) {
                 Card card = new Card(suits[suit], values[faceNum], new Image(Card.getFilename(suits[suit], values[faceNum])));
                 addCard(card);
             }
-        }
+        }      
         shuffle(); 
    }
 
@@ -34,12 +32,12 @@ public final class Deck {
    }
 
    public int getNumberOfCardsRemaining() {
-      return deck.size() - index;
+      return deck.size() - cardIndex;
    }
 
    public Card dealCard() {
-      if (index >= deck.size()) return null;
-      else return (Card) deck.get(index++);
+      if (cardIndex >= deck.size()) return null;
+      else return (Card) deck.get(cardIndex++);
    }
 
    public void shuffle() {
@@ -47,10 +45,10 @@ public final class Deck {
    }
 
    public boolean isEmpty() {
-       return index >= deck.size();
+       return cardIndex >= deck.size();
    }
 
    public void restoreDeck() {
-      index = 0;
+      cardIndex = 0;
    }   
 }
