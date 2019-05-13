@@ -27,7 +27,7 @@ public class Card {
        String rank = this.rankValue;  
        try{
            return Integer.parseInt(rank);  // tries to return as an integer
-       } catch (Exception ex){
+       } catch (NumberFormatException ex){
             return 10;   // if failed, it's a face card
        }
    }
@@ -48,9 +48,15 @@ public class Card {
    
    public String writeSuit() {
        String suit = getSuit();
-       if (suit.equals("s")) return "Spades";
-       else if (suit.equals("h")) return "Hearts";
-       else if (suit.equals("c")) return "Clubs";
-       else return "Diamonds";
+       switch (suit) {
+           case "s":
+               return "Spades";
+           case "h":
+               return "Hearts";
+           case "c":
+               return "Clubs";
+           default:
+               return "Diamonds";
+       }
    }
 }

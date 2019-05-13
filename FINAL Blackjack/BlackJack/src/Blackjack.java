@@ -1,3 +1,9 @@
+/**
+* Program: BlackJack
+* Developer: Justin Shull
+* Date: 5/13/19
+* Purpose: Play a game of blackjack with GUI interface
+*/
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -122,7 +128,7 @@ public class Blackjack extends Application {
              
         newbtn.setOnAction((e) -> newHand());
         
-        // set pane
+        // set pane for hands
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setPadding(new Insets(11, 12, 13, 14));
@@ -139,6 +145,7 @@ public class Blackjack extends Application {
         grid.add(newbtn, 2, 5);
         grid.add(status, 0, 6, 3, 1);
         
+        // set the main pane
         BorderPane pane = new BorderPane();
         pane.setCenter(grid);
         pane.setBackground(background);
