@@ -2,7 +2,7 @@
 
 ## Example Output
 
-![Sample Output](READEME.JPG)
+![Sample Output](README.JPG)
 
 ## Analysis Steps
 
